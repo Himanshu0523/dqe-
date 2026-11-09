@@ -1,0 +1,31 @@
+[project]
+name = "dqe"
+version = "1.0.0"
+description = "Universal Dataset Query Engine"
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0",
+    "sqlglot>=23.0",
+    "rich>=13.0",
+    "openpyxl>=3.1",
+    "pyarrow>=14.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+llm = ["openai>=1.30", "google-genai>=0.3"]
+dev = ["pytest>=8.0", "pytest-cov>=5.0"]
+
+[project.scripts]
+dqe = "dqe.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
